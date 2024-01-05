@@ -18,12 +18,12 @@ listController.getItems = async (req, res, next) => {
 
 listController.pushItems = async (req, res, next) => {
 
-    
 
-    let query = 'INSERT INTO list (text) VALUES ';
+    console.log(req.body);
+    let query = `INSERT INTO list (text) VALUES ${req.body}`;
     const result = await db.query(query);
     //console.log(result.rows);
-    res.locals.list = result.rows;
+    res.locals.pushed = result.rows;
     
     console.log(" got into controller ");
     console.log(result.rows);
